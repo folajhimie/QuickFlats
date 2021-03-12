@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --main-bg: #fff;
+  --pri-color: #1d3387;
+  --sec-color: #ee9b57;
+  --body-text: #7e7777;
+  --heading-text: #3c3a3a;
+}
+body {
+  font-size: 14px;
+  background: var(--main-bg);
+  font-weight: 300;
+}
