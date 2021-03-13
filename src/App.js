@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MainLayout from "./layout/Main-layout";
 import HomePage from "./pages/Home-page";
+import SignInPage from "./pages/sign-in-page"
 import "./App.css";
 
 class App extends React.Component {
@@ -13,6 +14,11 @@ class App extends React.Component {
             <Route path="/" exact>
               <MainLayout>
                 <HomePage />
+              </MainLayout>
+            </Route>
+            <Route path="/signIn" exact>
+              <MainLayout>
+                <SignInPage />
               </MainLayout>
             </Route>
           </Switch>

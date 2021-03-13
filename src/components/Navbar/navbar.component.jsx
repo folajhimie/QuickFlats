@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.styles.css";
+import Logo from "../../assets/images/logo.png";
 
 class Navbar extends React.Component {
   constructor() {
@@ -28,6 +29,7 @@ class Navbar extends React.Component {
           <div className="row pt-4">
             <div className="col-sm-2">
               <Link to="/" className="logo">
+                {/* <img style={{ width: "65px" }} src={Logo} alt="logo" /> */}
                 QUICKFLATS
               </Link>
             </div>
@@ -46,10 +48,7 @@ class Navbar extends React.Component {
                   <Link>FAQ</Link>
                 </li>
                 <li>
-                  <Link>Log In</Link>
-                </li>
-                <li>
-                  <Link>Sign Up</Link>
+                  <Link to="/signIn">Sign In</Link>
                 </li>
               </ul>
             </div>

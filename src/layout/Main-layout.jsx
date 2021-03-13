@@ -7,8 +7,8 @@ class MainLayout extends React.Component {
     return (
       <React.Fragment>
         <Navbar />
-        {/* {this.props.children}
-        <Footer /> */}
+        {this.props.children}
+        <Footer />
       </React.Fragment>
     );
   }
