@@ -9,10 +9,23 @@
   --sec-color: #ee9b57;
   --body-text: #7e7777;
   --heading-text: #3c3a3a;
+  --white-text: #ffffff;
 }
 body {
   font-size: 14px;
   background: var(--main-bg);
   font-weight: 400;
   font-family: "Lato", sans-serif;
+}
+.mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile {
+    display: block;
+  }
+  .desktop {
+    display: none;
+  }
 }

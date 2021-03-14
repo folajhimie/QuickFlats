@@ -1,12 +1,16 @@
 .Navbar {
-  z-index: 1000;
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
 }
 .logo {
   font-size: 20px;
   float: left;
   color: var(--pri-color);
   text-decoration: none;
-  margin-top: -3px;
+  /* margin-top: -20px; */
 }
 .logo:hover {
   color: var(--pri-color);
@@ -15,13 +19,22 @@
 .c-menu {
   text-align: right;
 }
+.nav-scroll {
+  background: var(--main-bg);
+}
+.hide {
+  display: none;
+}
 .c-menu li {
   list-style-type: none;
   display: inline;
   margin-right: 30px;
 }
+.black-text {
+  color: #000;
+}
 .c-menu li a {
-  color: var(--body-text);
+  color: var(--white-text);
   text-decoration: none;
 }
 .c-menu li a:hover {

@@ -19,7 +19,7 @@ class Navbar extends React.Component {
   };
   render() {
     return (
-      <div className="Navbar">
+      <div className="Navbar" id="c-nav">
         <div className="container">
           <div class="mobile m-icon" id="close" onClick={this.menu}>
             <div class="bar"></div>
@@ -28,27 +28,34 @@ class Navbar extends React.Component {
           </div>
           <div className="row pt-4">
             <div className="col-sm-2">
-              <Link to="/" className="logo">
-                {/* <img style={{ width: "65px" }} src={Logo} alt="logo" /> */}
+              <Link to="/" className="logo hide" id="logo">
+                {/* <img style={{ width: "70px" }} src={Logo} alt="logo" /> */}
                 QUICKFLATS
               </Link>
             </div>
             <div className="col-sm-10 " id="overlay">
               <ul className="c-menu desktop" id="mobile-menu">
                 <li>
-                  <Link>List a flat</Link>
+                  <Link className="nav-item" to="/">
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <Link>Find a flat</Link>
+                  <Link className="nav-item">List a flat</Link>
                 </li>
                 <li>
-                  <Link>About</Link>
+                  <Link className="nav-item">Find a flat</Link>
                 </li>
                 <li>
-                  <Link>FAQ</Link>
+                  <Link className="nav-item">About</Link>
                 </li>
                 <li>
-                  <Link to="/signIn">Sign In</Link>
+                  <Link className="nav-item">FAQ</Link>
+                </li>
+                <li>
+                  <Link className="nav-item" to="/signIn">
+                    Sign In
+                  </Link>
                 </li>
               </ul>
             </div>

@@ -1,0 +1,23 @@
+.c-btn {
+  background: var(--sec-color);
+  height: 40px;
+  transition: 0.5s;
+  border: none;
+  border-radius: 5px;
+}
+.c-btn:hover {
+  background: var(--pri-color);
+  color: #fff;
+}
+.c-btn-inverted {
+  background: var(--pri-color);
+  height: 40px;
+  transition: 0.5s;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}
+.c-btn-inverted:hover {
+  background: var(--sec-color);
+  color: #fff;
+}

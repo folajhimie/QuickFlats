@@ -5,7 +5,7 @@ import "./herobox.styles.css";
 
 const HeroBox = () => {
   return (
-    <div>
+    <React.Fragment>
       <div className="hero">
         <video
           src={quickflats}
@@ -17,14 +17,14 @@ const HeroBox = () => {
         <div className="hero-overlay">
           <div className="container">
             <h1 className="hero-heading">
-              Looking for a flat to rent? a short-let apartment? <br />
-              Find the perfect flat rental.
+              Looking for a flat to rent, a short-let apartment? <br />
+              Find the perfect flat rental here.
             </h1>
             <SearchForm />
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 export default HeroBox;

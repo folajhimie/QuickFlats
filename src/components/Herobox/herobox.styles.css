@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   height: auto;
-  /* z-index: 2; */
+  z-index: 0;
   overflow: hidden;
 }
 .hero-overlay {
@@ -10,12 +10,12 @@
   height: 100%;
   width: 100%;
   bottom: 5.5px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6);
 }
 .hero-heading {
   color: #ffffff;
   text-transform: uppercase;
-  font-size: 32px;
+  font-size: 28px;
   text-align: center;
   margin-top: 200px;
 }

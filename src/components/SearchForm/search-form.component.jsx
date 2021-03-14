@@ -1,4 +1,5 @@
 import React from "react";
+import CustomButton from "../button/button.component";
 import "./search-form.styles.css";
 
 class SearchForm extends React.Component {
@@ -6,31 +7,36 @@ class SearchForm extends React.Component {
     return (
       <div className="form">
         <form action="" className="search-form">
-          <div className="search-form-fields">
-            <div className="search-form-fields-wrapper">
-              <div className="search-form-input">
-                <div className="location role">
-                  <div className="search-destination">
-                    <div className="presentation">
-                      <div className="search-destination-input">
-                        <label htmlFor="location">Location</label>
-                        <input
-                          id="location"
-                          type="text"
-                          size="10"
-                          placeholder="Location"
-                          className="form-control"
-                          value
-                          autoComplete="off"
-                          aria-autocomplete="both"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* <label htmlFor="location" className="form-label">
+            location of flat
+          </label> */}
+          <input
+            type="text"
+            placeholder="location"
+            className="form-control"
+            id="location"
+          />
+          {/* <label htmlFor="rooms">rooms</label> */}
+          <input
+            type="text"
+            placeholder="How many rooms"
+            className="form-control"
+            id="rooms"
+          />
+          {/* <label htmlFor="price">Budget</label> */}
+          <input
+            type="text"
+            placeholder="Budget"
+            className="form-control"
+            id="price"
+          />
+          <input
+            type="date"
+            placeholder="Date"
+            className="form-control"
+            id="date"
+          />
+          <CustomButton className="ml-5" label="Find flat" size="250px" />
         </form>
       </div>
     );

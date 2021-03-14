@@ -1,0 +1,15 @@
+.services-section {
+  margin-top: -10px;
+  overflow: hidden;
+  width: 100%;
+  color: var(--body-text);
+}
+.services-title {
+  font-weight: 700;
+}
+.services-heading {
+  font-weight: 700;
+}
+.services-text {
+  text-align: justify;
+}
