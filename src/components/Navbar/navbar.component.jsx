@@ -29,8 +29,8 @@ class Navbar extends React.Component {
           <div className="row pt-4">
             <div className="col-sm-2">
               <Link to="/" className="logo hide" id="logo">
-                {/* <img style={{ width: "70px" }} src={Logo} alt="logo" /> */}
-                QUICKFLATS
+                <img style={{ width: "50px" }} src={Logo} alt="logo" />
+                {/* QUICKFLATS */}
               </Link>
             </div>
             <div className="col-sm-10 " id="overlay">

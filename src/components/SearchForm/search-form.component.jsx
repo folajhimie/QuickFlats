@@ -10,12 +10,13 @@ class SearchForm extends React.Component {
           {/* <label htmlFor="location" className="form-label">
             location of flat
           </label> */}
-          <input
-            type="text"
-            placeholder="location"
-            className="form-control"
-            id="location"
-          />
+          <select name="location" className="form-control select" id="location">
+            <option value="Select location">Select location</option>
+            <option value="Ikeja">Ikeja</option>
+            <option value="Yaba">Yaba</option>
+            <option value="Lekki">Lekki</option>
+            <option value="Victoria island">Victoria island</option>
+          </select>
           {/* <label htmlFor="rooms">rooms</label> */}
           <input
             type="text"
@@ -36,7 +37,7 @@ class SearchForm extends React.Component {
             className="form-control"
             id="date"
           />
-          <CustomButton className="ml-5" label="Find flat" size="250px" />
+          <CustomButton className="ml-4 " label="Find flat" size="300px" />
         </form>
       </div>
     );

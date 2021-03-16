@@ -14,11 +14,11 @@ const Services = () => {
       />
 
       <div className="container">
-        <h3 className="services-title">Our Services</h3>
+        <h3 className="services-title text-capitalize">Our Services</h3>
         <p>Join our community of quick flats users</p>
 
         <div className="row mt-4">
-          <div className="col-sm-6">
+          <div className="col-sm-6 service">
             <h5 className="services-heading">Need a flat?</h5>
             <p className="services-text">
               Looking for flexible, uniquely designed, fit for purpose, plug &
@@ -28,7 +28,7 @@ const Services = () => {
             </p>
             <CustomButton label="Find flat" size="80px" invertedButton />
           </div>
-          <div className="col-sm-6">
+          <div className="col-sm-6 service">
             <h5 className="services-heading">List a flat</h5>
             <p className="services-text">
               Looking for flexible, uniquely designed, fit for purpose, plug &
