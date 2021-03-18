@@ -2,7 +2,7 @@
     position: absolute;
     top: 0px;
     width: 250px;
-    height: 100%;
+    height: 100vh;
     background: var(--pri-dash-color);
     margin: 0px;
     transition: 0.5s;
@@ -26,7 +26,7 @@
 .sidebar-nav-item {
     width: 100%;
     height: auto;
-    padding: 35px 10px 35px 30px;
+    padding: 15px 10px 15px 30px;
    
 }
 .sidebar-nav-item:hover{
