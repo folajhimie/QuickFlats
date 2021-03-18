@@ -1,5 +1,6 @@
 import React from "react";
 import HeroBox from "../components/Herobox/herobox.component";
+import Locations from "../components/locations/location.component";
 import Services from "../components/Services/services.component";
 
 const HomePage = () => {
@@ -17,6 +18,7 @@ const HomePage = () => {
     <div>
       <HeroBox />
       <Services />
+      <Locations />
     </div>
   );
 };

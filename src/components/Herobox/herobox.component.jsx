@@ -1,14 +1,16 @@
 import React from "react";
 import quickflats from "../../assets/video/quickflats.mp4";
+import mobile from "../../assets/video/quickflats-mobile.mp4";
 import SearchForm from "../SearchForm/search-form.component";
 import "./herobox.styles.css";
 
 const HeroBox = () => {
+  const deviceWidth = window.innerWidth;
   return (
     <React.Fragment>
       <div className="hero">
         <video
-          src={quickflats}
+          src={deviceWidth > 768 ? quickflats : mobile}
           style={{ width: "100%" }}
           autoPlay
           muted

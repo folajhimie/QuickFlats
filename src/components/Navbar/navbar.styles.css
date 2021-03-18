@@ -3,14 +3,15 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: #000;
+  height: 60px;
 }
 .logo {
   font-size: 20px;
   float: left;
   color: var(--pri-color);
   text-decoration: none;
-  /* margin-top: -20px; */
+  margin-top: -20px;
 }
 .logo:hover {
   color: var(--pri-color);
