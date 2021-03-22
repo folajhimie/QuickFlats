@@ -23,7 +23,7 @@ const Carousel = () => {
       autoplay={true}
       autoplayTimeout={2000}
     >
-      <div class="item">
+      <div className="item">
         <Link to="#">
           <div
             className="carousel-card"
@@ -35,7 +35,7 @@ const Carousel = () => {
           </div>
         </Link>
       </div>
-      <div class="item">
+      <div className="item">
         <Link to="#">
           <div
             className="carousel-card"
@@ -47,7 +47,7 @@ const Carousel = () => {
           </div>
         </Link>
       </div>
-      <div class="item">
+      <div className="item">
         <Link to="#">
           <div
             className="carousel-card"
@@ -61,7 +61,7 @@ const Carousel = () => {
           </div>
         </Link>
       </div>
-      <div class="item">
+      <div className="item">
         <Link to="#">
           <div
             className="carousel-card"
