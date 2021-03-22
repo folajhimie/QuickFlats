@@ -16,22 +16,22 @@ const Sidebar = () => {
           <div className="sidebar-nav mt-5">
             <ul className="list-unstyled">
               <li className="sidebar-nav-item">
-                <Link>Dashboard</Link>
+                <Link to="#">Dashboard</Link>
               </li>
               <li className="sidebar-nav-item">
-                <Link>Requests</Link>
+                <Link to="#">Requests</Link>
               </li>
               <li className="sidebar-nav-item">
-                <Link>Flat listings</Link>
+                <Link to="#"> Flat listings</Link>
               </li>
               <li className="sidebar-nav-item">
-                <Link>Payments</Link>
+                <Link to="#">Payments</Link>
               </li>
               <li className="sidebar-nav-item">
-                <Link>Messages</Link>
+                <Link to="#">Messages</Link>
               </li>
               <li className="sidebar-nav-item">
-                <Link>Settings</Link>
+                <Link to="#">Settings</Link>
               </li>
             </ul>
           </div>

@@ -21,10 +21,10 @@ class Navbar extends React.Component {
     return (
       <div className="Navbar" id="c-nav">
         <div className="container">
-          <div class="mobile m-icon" id="close" onClick={this.menu}>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+          <div className="mobile m-icon" id="close" onClick={this.menu}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
           </div>
           <div className="row pt-4">
             <div className="col-sm-2">
@@ -36,21 +36,29 @@ class Navbar extends React.Component {
             <div className="col-sm-10 " id="overlay">
               <ul className="c-menu desktop" id="mobile-menu">
                 <li>
-                  <Link className="nav-item" to="/">
+                  <Link to="#" className="nav-item" to="/">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link className="nav-item">List a flat</Link>
+                  <Link to="#" className="nav-item">
+                    List a flat
+                  </Link>
                 </li>
                 <li>
-                  <Link className="nav-item">Find a flat</Link>
+                  <Link to="#" className="nav-item">
+                    Find a flat
+                  </Link>
                 </li>
                 <li>
-                  <Link className="nav-item">About</Link>
+                  <Link to="#" className="nav-item">
+                    About
+                  </Link>
                 </li>
                 <li>
-                  <Link className="nav-item">FAQ</Link>
+                  <Link to="#" className="nav-item">
+                    FAQ
+                  </Link>
                 </li>
                 <li>
                   <Link className="nav-item" to="/signIn">

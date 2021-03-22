@@ -10,7 +10,9 @@
   align-items: center;
   border-radius: 0px 5px 0 5px;
 }
-
+.card-box:hover {
+  background: var(--sec-color);
+}
 @media screen and (max-width: 760px) {
   .card-box {
     height: 80px;

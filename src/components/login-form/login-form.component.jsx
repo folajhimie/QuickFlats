@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import CustomButton from "../button/button.component";
 
 class LoginForm extends React.Component {
   state = {
     account: { email: "", password: "" },
     errors: {},
+    users: " ",
   };
 
   handleSubmit = (e) => {
@@ -23,6 +25,11 @@ class LoginForm extends React.Component {
     account[input.name] = input.value;
     this.setState({ account });
   };
+
+  async componentDidMount() {
+    const response = await axios.get("http://localhost:3001/newUser");
+    console.log(response.data);
+  }
 
   render() {
     const { account } = this.state;
