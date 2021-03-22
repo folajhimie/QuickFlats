@@ -1,53 +1,60 @@
 const cors = require('cors');
-const express = require('express')
-const mongoose = require('mongoose')
-var request = require('request')
-const Quickflats = require('./models/quickflats')
+const express = require('express') 
+const app = express()
+const morgan = require('morgan')
+// const bodyParser = require('body-parser')
+const mongoose = require('mongoose') 
 
-mongoose.connect('mongodb://localhost:27017/quickflats', {
+
+
+const productRoutes = require('./api/routes/products')
+const orderRoutes = require('./api/routes/orders')
+const userRoutes = require('./api/routes/users')
+
+mongoose.connect('mongodb://localhost/quickhomes' , {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
 })
-
-const db = mongoose.connection;
-db.on("error",console.error.bind(console, "connection error"));
-db.once("open", () => {
-    console.log("Database connected");
-})
-
-const app = express()
-
-require('dotenv').config()
-app.set('view engine', 'ejs')
+    .then(() => console.log('connected to MongoDB..'))
+    .catch(err => console.log('could not connect to MOngoDB..', err))
 
 app.use(cors());
 app.options('*', cors());
+app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-app.get('/', (req,res) => {
-    res.send("Hello from backend")
-})
-app.get('/listflat', async (req,res) => {
-    const flat = new Quickflats({name: 'Tamilore Zaid', location: 'unilag estate'})
-    await flat.save()
-    res.send(flat)
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept, Authorzation"
+    );
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE')
+        return res.status(200).json({})
+    }
+    next()
 })
 
-app.get('/newUser', (req, res) => {
-    request(
-        "http://jsonplaceholder.typicode.com/users/1",
-        function(error, response, body) {
-            if(!error && response.statusCode === 200) {
-                var parsedBody = JSON.parse(body);
-                var user = parsedBody['name']
-                res.send({user})
-            }
+app.use('/products', productRoutes) 
+app.use('/orders', orderRoutes)
+app.use('/users', userRoutes)
+
+app.use((req, res, next) => {
+    const error = new Error('Not Found')
+    error.status = 404;
+    next(error)
+})
+app.use((req, res, next) => {
+    const error = new Error('Not Found')
+    res.status(error.status || 500);
+    res.json({
+        error: {
+            message: error.message
         }
-    )
+    })
 })
-const PORT = process.env.port || 3001
 
-app.listen(PORT, () => {
-    const url = `http://localhost:${PORT}/`
-    console.log(`listening on ${url}`)
-})
+module.exports = app;
