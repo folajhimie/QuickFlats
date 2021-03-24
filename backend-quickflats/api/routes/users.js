@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken')
 
 const User = require('../models/user');
 
+
+
 router.post('/signup', (req, res, next) => {
     User.find({ email: req.body.email })
     .exec()
@@ -24,14 +26,17 @@ router.post('/signup', (req, res, next) => {
                     const user = new User({
                         _id: new mongoose.Types.ObjectId(),
                         email: req.body.email,
-                        password: hash
+                        password: hash,
+                        fullName: req.body.fullName,
+                        phoneNumber: req.body.phoneNumber
                     })
                 user
                     .save()
                     .then(result => {
                         console.log(result)
                         res.status(201).json({
-                            message: 'User Created'
+                            message: 'User Created',
+                            result
                         })
                     })
                     .catch(err => {
@@ -71,12 +76,13 @@ router.post('/login', (req, res, next) => {
                     },
                         "secret",
                     {
-                        expiresIn: "1h"
+                        expiresIn: "24h"
                     }
                     )
                     return res.status(200).json({
                         message: 'Auth Successful', 
-                        token: token
+                        token: token,
+                        result
                     });
                 }
                 res.status(401).json({

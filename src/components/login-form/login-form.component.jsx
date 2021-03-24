@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import CustomButton from "../button/button.component";
 
 class LoginForm extends React.Component {
   state = {
     account: { email: "", password: "" },
     errors: {},
-    users: " ",
   };
 
   handleSubmit = (e) => {
@@ -26,16 +24,16 @@ class LoginForm extends React.Component {
     this.setState({ account });
   };
 
-  async componentDidMount() {
-    const response = await axios.get("http://localhost:3001/newUser");
-    console.log(response.data);
-  }
+  // async componentDidMount() {
+  //   const response = await axios.get("http://localhost:3001/users/signup");
+  //   console.log(response.data);
+  // }
 
   render() {
     const { account } = this.state;
     return (
       <React.Fragment>
-        <div className="login-div">
+        <div className="login-div animate__animated animate__slideInRight">
           <h1 className="log mb-4">Login</h1>
           <form method="" onSubmit={this.handleSubmit}>
             <div className="form-group mb-3">

@@ -41,7 +41,7 @@ class Navbar extends React.Component {
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="nav-item">
+                  <Link to="/listFlat" className="nav-item">
                     List a flat
                   </Link>
                 </li>

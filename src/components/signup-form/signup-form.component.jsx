@@ -1,5 +1,6 @@
 import React from "react";
 import CustomButton from "../button/button.component";
+import axios from "axios";
 
 class SignUpForm extends React.Component {
   handleSubmit = (e) => {
@@ -11,9 +12,9 @@ class SignUpForm extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="reg-div shadow-lg  animated slideInUp">
+        <div className="reg-div shadow-lg  animate__animated animate__slideInUp">
           <h1 className="reg mb-4">Sign Up</h1>
-          <form method="" onSubmit={this.handleSubmit}>
+          <form method="POST" onSubmit={this.handleSubmit}>
             <div className="form-group mb-3">
               <input
                 type="text"
@@ -46,7 +47,7 @@ class SignUpForm extends React.Component {
                 className="form-control"
               />
             </div>
-            <CustomButton label="Sign up" size="120px" />
+            <CustomButton label="Sign up" size="120px" type="submit" />
           </form>
         </div>
       </React.Fragment>

@@ -6,6 +6,7 @@ import DashboardPage from "./pages/dashboard-pages/dashboard-page"
 import HomePage from "./pages/Home-page";
 import SignInPage from "./pages/sign-in-page"
 import "./App.css";
+import ListFlatPage from "./pages/list-flat-page";
 
 class App extends React.Component {
 
@@ -35,6 +36,11 @@ class App extends React.Component {
             <Route path="/signIn" exact>
               <MainLayout>
                 <SignInPage />
+              </MainLayout>
+            </Route>
+            <Route path="/listFlat" exact>
+              <MainLayout>
+                <ListFlatPage/>
               </MainLayout>
             </Route>
             <Route path="/dashboard" exact>
