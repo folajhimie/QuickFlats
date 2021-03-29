@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./listing-user-data.styles.css";
 import FormBg from "../../assets/images/formbg.png";
+import Input from "../input";
 
 class ListingUserData extends Component {
   continue = (e) => {
@@ -22,31 +23,20 @@ class ListingUserData extends Component {
                     <label>
                       Full Name <span className="required">*</span>
                     </label>
-                    <input
+                    <Input
                       type="text"
-                      name="field1"
-                      className="field-divided"
-                      placeholder="First"
-                      onChange={handleChange("firstName")}
-                      value={values.firstName}
-                    />{" "}
-                    <input
-                      type="text"
-                      name="field2"
-                      className="field-divided"
-                      placeholder="Last"
-                      onChange={handleChange("lastName")}
-                      value={values.lastName}
+                      name="fullName"
+                      onChange={handleChange("fullName")}
+                      value={values.fullName}
                     />
                   </li>
                   <li>
                     <label>
                       Email <span className="required">*</span>
                     </label>
-                    <input
+                    <Input
                       type="email"
-                      name="field3"
-                      className="field-long"
+                      name="email"
                       onChange={handleChange("email")}
                       value={values.email}
                     />
@@ -58,13 +48,11 @@ class ListingUserData extends Component {
                     <select
                       name="field4"
                       className="field-select"
-                      onChange={handleChange("state")}
                       value={values.state}
+                      onChange={handleChange("state")}
                     >
                       <option value="Lagos">Lagos</option>
                       <option value="Abuja">Abuja</option>
-                      {/* <option value="Partnership">Abuja</option>
-                      <option value="General Question">Ibadan</option> */}
                     </select>
                   </li>
                   <li>
@@ -74,8 +62,8 @@ class ListingUserData extends Component {
                     <select
                       name="field4"
                       className="field-select"
-                      onChange={handleChange("city")}
                       value={values.city}
+                      onChange={handleChange("city")}
                     >
                       <option value="Ikeja">Ikeja</option>
                       <option value="Lekki">Lekki</option>
@@ -86,21 +74,18 @@ class ListingUserData extends Component {
                     <label>
                       Address <span className="required">*</span>
                     </label>
-                    <input
+                    <Input
                       type="text"
-                      name="field3"
-                      className="field-long"
+                      name="address"
                       onChange={handleChange("address")}
                       value={values.address}
                     />
                   </li>
 
                   <li>
-                    <input
-                      value="continue"
-                      className="continue"
-                      onClick={this.continue}
-                    />
+                    <button className="continue" onClick={this.continue}>
+                      continue
+                    </button>
                   </li>
                 </ul>
               </form>

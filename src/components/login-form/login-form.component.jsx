@@ -1,63 +1,59 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import Input from "../input";
+import Form from "../Form/form";
+import Joi from "joi-browser";
 import CustomButton from "../button/button.component";
+import { login } from "../../services/authService";
 
-class LoginForm extends React.Component {
+class LoginForm extends Form {
   state = {
-    account: { email: "", password: "" },
+    data: { email: "", password: "" },
     errors: {},
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    const errors = this.validate();
-    this.setState({ errors });
-    //call the server
-    const email = this.email.current.value;
-    console.log(email);
+  schema = {
+    email: Joi.string().required().label("email"),
+    password: Joi.string().required().min(5).label("password"),
   };
 
-  handleChange = ({ currentTarget: input }) => {
-    const account = { ...this.state.account };
-    account[input.name] = input.value;
-    this.setState({ account });
+  doSubmit = async () => {
+    try {
+      const { data } = this.state;
+      const { data: result } = await login(data.email, data.password);
+      localStorage.setItem("token", result.token);
+      this.props.history.push("/dashboard");
+    } catch (e) {
+      if (e.response && e.response.status === 409) {
+        let errors = { ...this.state.errors };
+        errors = e.response.data;
+        console.log(errors);
+        this.setState({ errors });
+      }
+    }
   };
-
-  // async componentDidMount() {
-  //   const response = await axios.get("http://localhost:3001/users/signup");
-  //   console.log(response.data);
-  // }
 
   render() {
-    const { account } = this.state;
+    const { data, errors } = this.state;
     return (
       <React.Fragment>
         <div className="login-div animate__animated animate__slideInRight">
           <h1 className="log mb-4">Login</h1>
           <form method="" onSubmit={this.handleSubmit}>
-            <div className="form-group mb-3">
-              <input
-                value={account.email}
-                type="email"
-                onChange={this.handleChange}
-                name="email"
-                id="email"
-                placeholder="Email"
-                className="form-control form-input"
-              />
-            </div>
+            <Input
+              name="email"
+              value={data.email}
+              onChange={this.handleChange}
+              error={errors.email}
+            />
+            <Input
+              name="password"
+              value={data.password}
+              onChange={this.handleChange}
+              error={errors.password}
+              type="password"
+            />
 
-            <div className="form-group mb-3">
-              <input
-                value={account.password}
-                onChange={this.handleChange}
-                type="password"
-                name="password"
-                placeholder="Password"
-                className="form-control"
-              />
-            </div>
             <Link to="#" className="mb-3 forgot-password">
               <p> forgot password?</p>
             </Link>
@@ -69,4 +65,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

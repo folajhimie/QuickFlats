@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FormBg from "../../assets/images/formbg.png";
 import "./listing-flat-data.styles.css";
+import Input from "../input";
 
 class ListingFlatData extends Component {
   continue = (e) => {
@@ -49,10 +50,9 @@ class ListingFlatData extends Component {
                       How much would you charge for this flat?
                       <span className="required">*</span>
                     </label>
-                    <input
+                    <Input
                       type="number"
-                      name="field2"
-                      className="field-divided"
+                      name="price"
                       onChange={handleChange("price")}
                       value={values.price}
                     />
@@ -61,10 +61,9 @@ class ListingFlatData extends Component {
                     <label>
                       How many rooms? <span className="required">*</span>
                     </label>
-                    <input
+                    <Input
                       type="number"
-                      name="field3"
-                      className="field-long"
+                      name="rooms"
                       onChange={handleChange("rooms")}
                       value={values.rooms}
                     />
@@ -72,18 +71,14 @@ class ListingFlatData extends Component {
 
                   <div className="button-con mt-3">
                     <div>
-                      <input
-                        value="back"
-                        className="back"
-                        onClick={this.back}
-                      />
+                      <button className="back" onClick={this.back}>
+                        back
+                      </button>
                     </div>
                     <div>
-                      <input
-                        value="continue"
-                        className="continue"
-                        onClick={this.continue}
-                      />
+                      <button className="continue" onClick={this.continue}>
+                        continue
+                      </button>
                     </div>
                   </div>
                 </ul>

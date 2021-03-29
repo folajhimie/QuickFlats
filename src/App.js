@@ -1,35 +1,30 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import {ToastContainer} from 'react-toastify'
 import MainLayout from "./layout/Main-layout";
 import UserDashboard from './layout/user-dashboard/user-dashboard';
 import DashboardPage from "./pages/dashboard-pages/dashboard-page"
 import HomePage from "./pages/Home-page";
 import SignInPage from "./pages/sign-in-page"
 import "./App.css";
+
 import ListFlatPage from "./pages/list-flat-page";
+import 'react-toastify/dist/ReactToastify.css'
 
 class App extends React.Component {
-
-  
-  render() {
-  //   window.onscroll= function() {
-  //     var y= window.pageYOffset;
-  //     if(y>200){
-  //         document.getElementById("c-nav").classList.add("nav-scroll")
-  //         document.getElementById("logo").classList.remove("hide")
-  //     }
-  //     else{
-  //         document.getElementById("logo").classList.add("hide")
-  //         document.getElementById("c-nav").classList.remove("nav-scroll")
-  //     }
+ 
+  // componentDidMount() {
+  //   const root = document.getElementById("root");
+  //   root.classList.add
   // }
   
+  render() {  
     return (
-      <div>
-        <Router>
+      <div className="App ">
+        <Router >
           <Switch>
             <Route path="/" exact>
-              <MainLayout>
+              <MainLayout  >
                 <HomePage />
               </MainLayout>
             </Route>

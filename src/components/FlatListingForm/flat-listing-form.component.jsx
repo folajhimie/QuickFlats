@@ -6,8 +6,7 @@ import ListingDescriptionData from "../ListingDescriptionData/listing-descriptio
 class FlatListingForm extends Component {
   state = {
     step: 1,
-    firstName: "",
-    lastName: "",
+    fullName: "",
     email: "",
     state: "",
     city: "",
@@ -43,8 +42,7 @@ class FlatListingForm extends Component {
   render() {
     const { step } = this.state;
     const {
-      firstName,
-      lastName,
+      fullName,
       email,
       state,
       city,
@@ -56,8 +54,7 @@ class FlatListingForm extends Component {
       flatDescription,
     } = this.state;
     const values = {
-      firstName,
-      lastName,
+      fullName,
       email,
       state,
       city,

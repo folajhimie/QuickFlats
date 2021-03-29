@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FormBg from "../../assets/images/formbg.png";
 import "./listing-description-data.styles.css";
+import Input from "../input";
 
 class ListingDescriptionData extends Component {
   continue = (e) => {
@@ -33,10 +34,9 @@ class ListingDescriptionData extends Component {
                       are clear and clean
                       <span className="required">*</span>
                     </label>
-                    <input
+                    <Input
                       type="file"
-                      name="field2"
-                      className="field-long"
+                      name="upload flat"
                       onChange={handleChange("pictureUpload")}
                       value={values.pictureUpload}
                     />
@@ -55,18 +55,14 @@ class ListingDescriptionData extends Component {
                   </li>
                   <div className="button-con mt-3">
                     <div>
-                      <input
-                        value="back"
-                        className="back"
-                        onClick={this.back}
-                      />
+                      <button className="back" onClick={this.back}>
+                        back
+                      </button>
                     </div>
                     <div>
-                      <input
-                        value="continue"
-                        className="continue"
-                        onClick={this.continue}
-                      />
+                      <button className="continue" onClick={this.continue}>
+                        continue
+                      </button>
                     </div>
                   </div>
                 </ul>

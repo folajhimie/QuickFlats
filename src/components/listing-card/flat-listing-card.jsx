@@ -10,7 +10,7 @@ const ListingCard = () => {
         <p>Listings (2)</p>
       </div>
       <div className="listings-con">
-        <div class="list-card">
+        <div className="list-card">
           <div className="flat-img-card">
             <img src={Flat1} alt="flat-img" className="flat-img" />
           </div>
@@ -19,7 +19,7 @@ const ListingCard = () => {
             <p>Lekki, Nigeria</p>
           </div>
         </div>
-        <div class="list-card mt-2">
+        <div className="list-card mt-2">
           <div className="flat-img-card">
             <img src={Flat2} alt="flat-img" className="flat-img" />
           </div>

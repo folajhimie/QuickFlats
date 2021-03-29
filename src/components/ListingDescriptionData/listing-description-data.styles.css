@@ -32,7 +32,7 @@ select {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  border: 1px solid #bebebe;
+  border: 1px solid var(--sec-color);
   padding: 7px;
   margin: 0px;
   -webkit-transition: all 0.3s ease-in-out;

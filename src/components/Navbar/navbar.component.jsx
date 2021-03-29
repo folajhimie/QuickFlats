@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.styles.css";
 import Logo from "../../assets/images/logo.png";
+import Toggle from "../toggle-button/toggle.component";
 
 class Navbar extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       navbarOpen: false,
     };
@@ -17,7 +18,7 @@ class Navbar extends React.Component {
     document.getElementById("close").classList.toggle("m-close");
     this.setState({ navbarOpen: !this.state.navbarOpen });
   };
-  render() {
+  render(props) {
     return (
       <div className="Navbar" id="c-nav">
         <div className="container">
@@ -56,14 +57,12 @@ class Navbar extends React.Component {
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="nav-item">
-                    FAQ
-                  </Link>
-                </li>
-                <li>
                   <Link className="nav-item" to="/signIn">
                     Sign In
                   </Link>
+                </li>
+                <li style={{ display: "inline-block" }}>
+                  <Toggle />
                 </li>
               </ul>
             </div>
