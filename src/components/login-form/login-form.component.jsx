@@ -4,6 +4,8 @@ import Input from "../input";
 import Form from "../Form/form";
 import Joi from "joi-browser";
 import CustomButton from "../button/button.component";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { login } from "../../services/authService";
 
 class LoginForm extends Form {
@@ -24,10 +26,11 @@ class LoginForm extends Form {
       localStorage.setItem("token", result.token);
       this.props.history.push("/dashboard");
     } catch (e) {
-      if (e.response && e.response.status === 409) {
+      if (e.response && e.response.status === 401) {
         let errors = { ...this.state.errors };
         errors = e.response.data;
         console.log(errors);
+        toast.error(errors.message);
         this.setState({ errors });
       }
     }

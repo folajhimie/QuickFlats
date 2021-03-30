@@ -2,7 +2,10 @@ import React from "react";
 import CustomButton from "../button/button.component";
 import Input from "../input";
 import Joi from "joi-browser";
+import { Link, withRouter } from "react-router-dom";
 import { register } from "../../services/userService";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Form from "../Form/form";
 
 class SignUpForm extends Form {
@@ -27,11 +30,18 @@ class SignUpForm extends Form {
     try {
       //call the server
       const response = await register(this.state.data);
-      console.log(response);
+      console.log(response.data.result._id);
+      toast.success("Successful");
+      localStorage.setItem("id", response.data.result._id);
+      this.props.history.push("/dashboard");
+      this.setState({
+        data: { fullName: "", password: "", email: "", phoneNumber: "" },
+      });
     } catch (e) {
       if (e.response && e.response.status === 409) {
         let errors = { ...this.state.errors };
         errors = e.response.data;
+        toast.error(errors.message);
         console.log(errors);
         this.setState({ errors });
       }
@@ -80,4 +90,4 @@ class SignUpForm extends Form {
   }
 }
 
-export default SignUpForm;
+export default withRouter(SignUpForm);

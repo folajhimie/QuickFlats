@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import {ToastContainer} from 'react-toastify'
+import {ToastContainer} from 'react-toastify'
 import MainLayout from "./layout/Main-layout";
 import UserDashboard from './layout/user-dashboard/user-dashboard';
 import DashboardPage from "./pages/dashboard-pages/dashboard-page"
@@ -13,16 +13,20 @@ import 'react-toastify/dist/ReactToastify.css'
 
 class App extends React.Component {
  
-  // componentDidMount() {
-  //   const root = document.getElementById("root");
-  //   root.classList.add
-  // }
+  
   
   render() {  
     return (
       <div className="App ">
+         <ToastContainer
+              position="top-right"
+              autoClose="3000"
+              hideProgressBar
+              closeOnClick
+            />
         <Router >
           <Switch>
+            
             <Route path="/" exact>
               <MainLayout  >
                 <HomePage />
