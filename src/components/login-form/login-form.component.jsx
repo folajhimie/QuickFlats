@@ -4,7 +4,7 @@ import Input from "../input";
 import Form from "../Form/form";
 import Joi from "joi-browser";
 import CustomButton from "../button/button.component";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { login } from "../../services/authService";
 
@@ -24,6 +24,9 @@ class LoginForm extends Form {
       const { data } = this.state;
       const { data: result } = await login(data.email, data.password);
       localStorage.setItem("token", result.token);
+      setTimeout(() => {
+        toast.success("login successful");
+      }, 2000);
       this.props.history.push("/dashboard");
     } catch (e) {
       if (e.response && e.response.status === 401) {

@@ -19,6 +19,7 @@ class Navbar extends React.Component {
     this.setState({ navbarOpen: !this.state.navbarOpen });
   };
   render(props) {
+    const { user } = this.props;
     return (
       <div className="Navbar" id="c-nav">
         <div className="container">
@@ -37,7 +38,7 @@ class Navbar extends React.Component {
             <div className="col-sm-10 " id="overlay">
               <ul className="c-menu desktop" id="mobile-menu">
                 <li>
-                  <Link to="#" className="nav-item" to="/">
+                  <Link to="#" className="nav-item">
                     Home
                   </Link>
                 </li>
@@ -56,11 +57,24 @@ class Navbar extends React.Component {
                     About
                   </Link>
                 </li>
-                <li>
-                  <Link className="nav-item" to="/signIn">
-                    Sign In
-                  </Link>
-                </li>
+                {!user && (
+                  <React.Fragment>
+                    <li>
+                      <Link className="nav-item" to="/signIn">
+                        Sign In
+                      </Link>
+                    </li>
+                  </React.Fragment>
+                )}
+                {user && (
+                  <React.Fragment>
+                    <li>
+                      <Link className="nav-item" to="/dashboard">
+                        {user.email}
+                      </Link>
+                    </li>
+                  </React.Fragment>
+                )}
                 <li style={{ display: "inline-block" }}>
                   <Toggle />
                 </li>

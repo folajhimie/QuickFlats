@@ -2,9 +2,9 @@ import React from "react";
 import CustomButton from "../button/button.component";
 import Input from "../input";
 import Joi from "joi-browser";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { register } from "../../services/userService";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Form from "../Form/form";
 
@@ -31,7 +31,9 @@ class SignUpForm extends Form {
       //call the server
       const response = await register(this.state.data);
       console.log(response.data.result._id);
-      toast.success("Successful");
+      setTimeout(() => {
+        toast.success("successful");
+      }, 2000);
       localStorage.setItem("id", response.data.result._id);
       this.props.history.push("/dashboard");
       this.setState({

@@ -1,7 +1,7 @@
 import React from "react";
 import "./sidebar.styles.css";
 import { Link } from "react-router-dom";
-import User from "../../assets/images/tami.jpg";
+// import User from "../../assets/images/tami.jpg";
 
 const Sidebar = () => {
   return (
@@ -9,7 +9,7 @@ const Sidebar = () => {
       <div className="sidebar" id="sidebar">
         <div className="sidebar-content">
           <div className="user-profile">
-            <img src={User} alt="avatar" className="avatar" />
+            {/* <img src={User} alt="avatar" className="avatar" /> */}
             <p className="username mt-3">Zaid Tamilore</p>
           </div>
 
