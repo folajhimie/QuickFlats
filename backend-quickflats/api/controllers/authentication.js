@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
-const express = require('express'); 
-const router = express.Router();
+// const express = require('express'); 
+// const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
+// const validate = require('../validators/userValidate')
 
 const User = require('../models/user');
 
-router.post('/signup', (req, res, next) => {
-    User.find({ email: req.body.email })
+const getSignup = async(req, res) => {
+    await User.find({ email: req.body.email })
     .exec()
     .then(user => {
         if (user.length >= 1) {
@@ -15,7 +16,7 @@ router.post('/signup', (req, res, next) => {
                 message: 'Mail exists'
             })
         } else {
-            bcrypt.hash(req.body.password, 10, (err, hash) => {
+        let password = bcrypt.hash(req.body.password, 10, (err, hash) => {
                 if (err) {
                     return res.status(200).json({
                         error: err
@@ -23,8 +24,11 @@ router.post('/signup', (req, res, next) => {
                 } else { 
                     const user = new User({
                         _id: new mongoose.Types.ObjectId(),
+                        fullName: req.body.fullName,
+                        phoneNumber: parseInt(req.body.phoneNumber),
                         email: req.body.email,
-                        password: hash
+                        password: req.body.password,
+
                     })
                 user
                     .save()
@@ -47,21 +51,21 @@ router.post('/signup', (req, res, next) => {
         }
     })
     
-})
+}
 
-router.post('/login', (req, res, next) => {
-    User.find({ email: req.body.email })
+const getLogin = async (req, res, next) => {
+    await User.find({ email: req.body.email })
         .exec()
         .then(user => {
-            if (user.length < 1) {
+            if (!user) {
                 return res.status(200).json({
-                    message: 'Auth Failed'
+                    message: 'Authorization Failed'
                 });
             }
             bcrypt.compare(req.body.password, user[0].password, (err, result) => {
                 if (err) {
                     return res.status(401).json({
-                        message: 'Auth Failed'
+                        message: 'Authentication Failed'
                     });
                 }
                 if (result) {
@@ -69,10 +73,10 @@ router.post('/login', (req, res, next) => {
                         email: user[0].email,
                         userId: user[0]._id
                     },
-                        "secret",
+                    process.env.JWT_KEY,
                     {
                         expiresIn: "1h"
-                    }
+                    }   
                     )
                     return res.status(200).json({
                         message: 'Auth Successful', 
@@ -91,22 +95,6 @@ router.post('/login', (req, res, next) => {
             })
         });
         
-})
+}
 
-router.delete('/:userId', (req, res, next) => {
-    User.remove({ _id: req.params.userId })
-        .exec()
-        .then(result => {
-            res.status(200).json({
-                message: " user deleted "
-            });
-        })
-        .catch(err => {
-            console.log(err)
-            res.status(500).json({
-                error: err
-            })
-        });
-})
-
-module.exports = router;
+module.exports = {getLogin, getSignup};

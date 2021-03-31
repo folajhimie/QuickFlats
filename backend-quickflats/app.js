@@ -7,9 +7,15 @@ const mongoose = require('mongoose')
 
 const productRoutes = require('./api/routes/products')
 const orderRoutes = require('./api/routes/orders')
-const userRoutes = require('./api/routes/users')
+const userRoutes = require('./api/routes/index');
+const listingRoutes = require('./api/routes/index')
 
-mongoose.connect('mongodb://localhost/quickhomes')
+mongoose.connect('mongodb://localhost/quickhomes',
+    {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true
+    })
     .then(() => console.log('connected to MongoDB..'))
     .catch(err => console.log('could not connect to MOngoDB..', err))
 
@@ -33,6 +39,7 @@ app.use((req, res, next) => {
 app.use('/products', productRoutes) 
 app.use('/orders', orderRoutes)
 app.use('/users', userRoutes)
+app.use('/listing', listingRoutes)
 
 app.use((req, res, next) => {
     const error = new Error('Not Found')
