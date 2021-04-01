@@ -12,16 +12,18 @@ class UserNav extends React.Component {
             <div className="test">
               <div className="nav-items">
                 <div className="toggle" onClick={() => this.props.menu()}>
-                  <div class="toggle-bar"></div>
-                  <div class="toggle-bar"></div>
-                  <div class="toggle-bar"></div>
+                  <div className="toggle-bar"></div>
+                  <div className="toggle-bar"></div>
+                  <div className="toggle-bar"></div>
                 </div>
                 <Link to="/" className="dashboard-logo" id="logo">
                   <img style={{ width: "35px" }} src={Logo} alt="logo" />
                 </Link>
               </div>
               <div className="logout">
-                <p>log out</p>
+                <Link to="/logout">
+                  <p>log out</p>
+                </Link>
               </div>
             </div>
           </div>
