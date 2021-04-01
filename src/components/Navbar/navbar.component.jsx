@@ -38,7 +38,7 @@ class Navbar extends React.Component {
             <div className="col-sm-10 " id="overlay">
               <ul className="c-menu desktop" id="mobile-menu">
                 <li>
-                  <Link to="#" className="nav-item">
+                  <Link to="/" className="nav-item">
                     Home
                   </Link>
                 </li>
@@ -70,7 +70,12 @@ class Navbar extends React.Component {
                   <React.Fragment>
                     <li>
                       <Link className="nav-item" to="/dashboard">
-                        {user.email}
+                        Hi, {user.userName}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="nav-item" to="/logout">
+                        logout
                       </Link>
                     </li>
                   </React.Fragment>

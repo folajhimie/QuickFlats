@@ -6,15 +6,16 @@ import Joi from "joi-browser";
 import CustomButton from "../button/button.component";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { login } from "../../services/authService";
+import auth from "../../services/authService";
 
 class LoginForm extends Form {
   state = {
-    data: { email: "", password: "" },
+    data: { email: "", userName: "", password: "" },
     errors: {},
   };
 
   schema = {
+    userName: Joi.string().required().label("email"),
     email: Joi.string().required().label("email"),
     password: Joi.string().required().min(5).label("password"),
   };
@@ -22,12 +23,12 @@ class LoginForm extends Form {
   doSubmit = async () => {
     try {
       const { data } = this.state;
-      const { data: result } = await login(data.email, data.password);
-      localStorage.setItem("token", result.token);
+      await auth.login(data.email, data.userName, data.password);
+      toast.success("login successful");
       setTimeout(() => {
-        toast.success("login successful");
+        window.location = "/dashboard";
       }, 2000);
-      this.props.history.push("/dashboard");
+      // this.props.history.push("/dashboard");
     } catch (e) {
       if (e.response && e.response.status === 401) {
         let errors = { ...this.state.errors };
@@ -46,6 +47,12 @@ class LoginForm extends Form {
         <div className="login-div animate__animated animate__slideInRight">
           <h1 className="log mb-4">Login</h1>
           <form method="" onSubmit={this.handleSubmit}>
+            <Input
+              name="userName"
+              value={data.userName}
+              onChange={this.handleChange}
+              error={errors.userName}
+            />
             <Input
               name="email"
               value={data.email}

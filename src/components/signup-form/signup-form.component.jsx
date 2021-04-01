@@ -4,6 +4,7 @@ import Input from "../input";
 import Joi from "joi-browser";
 import { withRouter } from "react-router-dom";
 import { register } from "../../services/userService";
+import auth from "../../services/authService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Form from "../Form/form";
@@ -12,6 +13,7 @@ class SignUpForm extends Form {
   state = {
     data: {
       fullName: "",
+      userName: "",
       password: "",
       email: "",
       phoneNumber: "",
@@ -21,6 +23,7 @@ class SignUpForm extends Form {
 
   schema = {
     fullName: Joi.string().required().label("Fullname"),
+    userName: Joi.string().required().label("Username"),
     email: Joi.string().required().label("email"),
     password: Joi.string().required().min(5).label("password"),
     phoneNumber: Joi.string().required().label("phoneNumber").min(11),
@@ -30,14 +33,19 @@ class SignUpForm extends Form {
     try {
       //call the server
       const response = await register(this.state.data);
-      console.log(response.data.result._id);
+      auth.loginWithJwt(response.data.token);
+      toast.success("successful");
       setTimeout(() => {
-        toast.success("successful");
+        window.location = "/dashboard";
       }, 2000);
-      localStorage.setItem("id", response.data.result._id);
-      this.props.history.push("/dashboard");
       this.setState({
-        data: { fullName: "", password: "", email: "", phoneNumber: "" },
+        data: {
+          fullName: "",
+          userName: "",
+          password: "",
+          email: "",
+          phoneNumber: "",
+        },
       });
     } catch (e) {
       if (e.response && e.response.status === 409) {
@@ -63,6 +71,12 @@ class SignUpForm extends Form {
               value={data.fullName}
               onChange={this.handleChange}
               error={errors.fullName}
+            />
+            <Input
+              name="userName"
+              value={data.userName}
+              onChange={this.handleChange}
+              error={errors.userName}
             />
             <Input
               name="email"

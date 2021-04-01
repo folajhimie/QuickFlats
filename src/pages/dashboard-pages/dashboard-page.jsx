@@ -7,7 +7,7 @@ const DashboardPage = () => {
   return (
     <div className="dashboard-container mt-5">
       <div className="container">
-        <h4 className="user-welcome">Hello, Tamilore</h4>
+        {/* <h4 className="user-welcome">Hello, Tamilore</h4> */}
         <div className="row mt-4 mb-5">
           <div className="col-sm-4 card-box">
             <p>Next payment date is</p>

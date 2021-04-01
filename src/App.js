@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {ToastContainer} from 'react-toastify'
-import jwtDecode from 'jwt-decode'
+
 
 import MainLayout from "./layout/Main-layout";
 import UserDashboard from './layout/user-dashboard/user-dashboard';
@@ -9,7 +9,8 @@ import DashboardPage from "./pages/dashboard-pages/dashboard-page"
 import HomePage from "./pages/Home-page";
 import SignInPage from "./pages/sign-in-page"
 import ListFlatPage from "./pages/list-flat-page";
-
+import Logout from './components/logout'
+import auth from './services/authService'
 import "./App.css";
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -20,13 +21,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    try {
-      const jwt = localStorage.getItem('token')
-      const user = jwtDecode(jwt)
-      this.setState({user})
-    } catch (error) {
-      console.log(error)
-    }
+   const user = auth.getCurrentUser()
+   this.setState({user})
   }
    render() { 
      const {user } = this.state 
@@ -45,6 +41,7 @@ class App extends React.Component {
                 <HomePage />
               </MainLayout>
             </Route>
+            <Route path="/logout" component={Logout}/>
             <Route path="/signIn" exact>
               <MainLayout user={user}>
                 <SignInPage />

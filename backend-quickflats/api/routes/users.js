@@ -27,15 +27,29 @@ router.post('/signup', (req, res, next) => {
                         _id: new mongoose.Types.ObjectId(),
                         email: req.body.email,
                         password: hash,
+                        userName: req.body.userName,
                         fullName: req.body.fullName,
                         phoneNumber: req.body.phoneNumber
                     })
                 user
                     .save()
                     .then(result => {
-                        console.log(result)
+                        // console.log(result)
+                        const token = jwt.sign({
+                            email: user.email,
+                            phoneNumber: user.phoneNumber,
+                            userName: user.userName,
+                            fullName: user.fullName,
+                            userId: user._id
+                        },
+                            "secret",
+                        {
+                            expiresIn: "24h"
+                        }
+                        )
                         res.status(201).json({
                             message: 'User Created',
+                            token: token,
                             result
                         })
                     })
@@ -72,6 +86,7 @@ router.post('/login', (req, res, next) => {
                 if (result) {
                     const token = jwt.sign({
                         email: user[0].email,
+                        userName: user[0].userName,
                         userId: user[0]._id
                     },
                         "secret",
@@ -85,7 +100,7 @@ router.post('/login', (req, res, next) => {
                         result
                     });
                 }
-                res.status(401).json({
+                res.json({
                     message: 'Password does not match'
                 });
             })
