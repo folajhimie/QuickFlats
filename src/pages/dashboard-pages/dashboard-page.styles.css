@@ -1,0 +1,20 @@
+.card-box {
+  color: var(--main-bg);
+  /* width: 100%; */
+  height: 120px;
+  background: var(--pri-dash-color);
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 5px 0 5px;
+}
+.card-box:hover {
+  background: var(--sec-color);
+}
+@media screen and (max-width: 760px) {
+  .card-box {
+    height: 80px;
+  }
+}

@@ -1,18 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import CustomButton from "../button/button.component";
 
 class LoginForm extends React.Component {
-  email = React.createRef();
+  state = {
+    account: { email: "", password: "" },
+    errors: {},
+    users: " ",
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
+
+    const errors = this.validate();
+    this.setState({ errors });
     //call the server
     const email = this.email.current.value;
     console.log(email);
   };
 
+  handleChange = ({ currentTarget: input }) => {
+    const account = { ...this.state.account };
+    account[input.name] = input.value;
+    this.setState({ account });
+  };
+
+  async componentDidMount() {
+    const response = await axios.get("http://localhost:3001/newUser");
+    console.log(response.data);
+  }
+
   render() {
+    const { account } = this.state;
     return (
       <React.Fragment>
         <div className="login-div">
@@ -20,8 +40,9 @@ class LoginForm extends React.Component {
           <form method="" onSubmit={this.handleSubmit}>
             <div className="form-group mb-3">
               <input
-                ref={this.email}
+                value={account.email}
                 type="email"
+                onChange={this.handleChange}
                 name="email"
                 id="email"
                 placeholder="Email"
@@ -31,6 +52,8 @@ class LoginForm extends React.Component {
 
             <div className="form-group mb-3">
               <input
+                value={account.password}
+                onChange={this.handleChange}
                 type="password"
                 name="password"
                 placeholder="Password"
